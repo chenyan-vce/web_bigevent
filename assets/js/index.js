@@ -28,10 +28,12 @@ function getUserinfo() {
         method: 'GET',
         url: '/my/userinfo',
         success: res => {
-            console.log(res);
+            // console.log(res);
             if (res.status !== 0) {
                 return layui.layer.msg('获取用户信息失败')
             }
+            // console.log(res);
+            
             //渲染用户的基本信息 
             renderAvatar(res.data)
         },
@@ -40,8 +42,8 @@ function getUserinfo() {
 // 渲染用户的基本信息
 function renderAvatar(userinfo) {
     // 渲染用户的名称
-    var username = userinfo.username || userinfo.nickname
-    $('#welcome').html('欢迎&nbsp,&nbsp' + username)
+    var name = userinfo.nickname || userinfo.username
+    $('#welcome').html('欢迎&nbsp,&nbsp' + name)
     // 渲染用户的头像
     if (userinfo.user_pic !== null) {
         $('.layui-nav-img')
@@ -51,7 +53,7 @@ function renderAvatar(userinfo) {
     } else {
         $('.layui-nav-img').hide()
         // 获取用户名的第一个字
-        var frist = username[0]
+        var frist = name[0]
         $('.text-avatar').html(frist).show()
     }
 }

@@ -11,10 +11,10 @@ $.ajaxPrefilter(function (options) {
     }
     // 为每个有权限的接口挂在comolete函数
     options.complete = res => {
-        console.log('执行了complate');
+        // console.log('执行了complate');
         // console.log(res);
         // res.responseJSON拿到服务器响应回来的数据
-        console.log(res.responseJSON);
+        // console.log(res.responseJSON);
         if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
             // 1、强制清空token
             localStorage.removeItem('token')
