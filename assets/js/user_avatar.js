@@ -8,9 +8,9 @@ $(function () {
         // 指定预览区域 w100和w50
         preview: '.img-preview'
     }
-
     // 1.3 创建裁剪区域
     $image.cropper(options)
+
 
 
     // 为上传按钮添加点击事件
@@ -32,10 +32,8 @@ $(function () {
         // 2更换裁剪的图片
         //2.1拿到用户上传的文件
         var file = filelist[0];
-        // console.log(file);
-        //2.2根据选择的文件，创建一个对应的 URL 地址
+        //2.2给文件转化为一个url地址
         var imgUrl = URL.createObjectURL(file)
-        // console.log(imgurl);
         //2.3重新初始化裁剪区
         $image
             .cropper('destroy')      // 销毁旧的裁剪区域
@@ -45,7 +43,6 @@ $(function () {
 
 
     // 调用接口把裁剪完成的图片上传到服务器
-    // 为群定按钮绑定事件
     $('#btnupload').on('click', function () {
         // 3、将裁剪后的图片，输出为 base64 格式的字符串
         var dataURL = $image
@@ -61,9 +58,8 @@ $(function () {
                 avatar: dataURL
             },
             success: res => {
-                // console.log(res);
-                if(res.status!==0){
-                    return layui/layer.msg('上传失败')
+                if (res.status !== 0) {
+                    return layui.layer.msg('上传失败')
                 }
                 layui.layer.msg('上传成功')
                 // 重新渲染页面
