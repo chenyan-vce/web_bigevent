@@ -38,7 +38,7 @@ $(function () {
                 if (res.status !== 0) {
                     return layer.msg(res.message)
                 }
-                layer.message('您已注册成功！请登录')
+                layer.msg('您已注册成功！请登录')
                 // 跳转登录页面
                 $('#goLogin').click()
             })
