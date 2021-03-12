@@ -13,7 +13,7 @@ $(function () {
             // 1、清空本地存储的token
             localStorage.removeItem('token')
             // 2、重新跳转到登录页
-            location.href('/login.html')
+            location.href=('/login.html')
             // 关闭询问框
             layer.close(index);
         });
